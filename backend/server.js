@@ -6,6 +6,8 @@ const connectDB = require('./config/db');
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
+const problemRoutes = require('./routes/problemRoutes');
+const solutionRoutes = require('./routes/solutionRoutes');
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.get('/', (req, res) => {
 
 // Use routes
 app.use('/api/auth', authRoutes);
+app.use('/api/problems', problemRoutes);
+app.use('/api/solutions', solutionRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

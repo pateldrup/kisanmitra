@@ -12,6 +12,9 @@ import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import ComingSoon from './pages/ComingSoon';
+import CreateProblem from './pages/CreateProblem';
+import ProblemDetails from './pages/ProblemDetails';
+import EditProblem from './pages/EditProblem';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -42,8 +45,11 @@ function App() {
             <Route path="/settings" element={
               <PrivateRoute><Settings /></PrivateRoute>
             } />
+            {/* Problem Routes */}
+            <Route path="/create-problem" element={<PrivateRoute><CreateProblem /></PrivateRoute>} />
+            <Route path="/problem/:id" element={<ProblemDetails />} />
+            <Route path="/edit-problem/:id" element={<PrivateRoute><EditProblem /></PrivateRoute>} />
             {/* Coming Soon — future feature pages */}
-            <Route path="/create-problem" element={<PrivateRoute><ComingSoon /></PrivateRoute>} />
             <Route path="/crop-guide"     element={<ComingSoon />} />
             <Route path="/mandi-prices"   element={<ComingSoon />} />
             <Route path="/weather"        element={<ComingSoon />} />
