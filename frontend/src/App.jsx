@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import ComingSoon from './pages/ComingSoon';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -41,6 +42,12 @@ function App() {
             <Route path="/settings" element={
               <PrivateRoute><Settings /></PrivateRoute>
             } />
+            {/* Coming Soon — future feature pages */}
+            <Route path="/create-problem" element={<PrivateRoute><ComingSoon /></PrivateRoute>} />
+            <Route path="/crop-guide"     element={<ComingSoon />} />
+            <Route path="/mandi-prices"   element={<ComingSoon />} />
+            <Route path="/weather"        element={<ComingSoon />} />
+            <Route path="/crop-doctor"    element={<ComingSoon />} />
           </Routes>
         </main>
         <Footer />
