@@ -7,12 +7,7 @@ import Logo from './Logo';
 import Button from './Button';
 
 const navLinks = [
-  { name: 'Dashboard', path: '/dashboard' },
-  { name: 'Post Problem', path: '/create-problem' },
-  { name: 'Crop Guide', path: '/crop-guide' },
-  { name: 'Mandi Prices', path: '/mandi-prices' },
-  { name: 'Weather', path: '/weather' },
-  { name: 'Crop Doctor', path: '/crop-doctor' },
+  { name: 'Dashboard', path: '/dashboard' }
 ];
 
 const Navbar = () => {

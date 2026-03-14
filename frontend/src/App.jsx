@@ -4,14 +4,11 @@ import { AuthContext } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Placeholder Pages
+// Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
-import CreateProblem from './pages/CreateProblem';
-import EditProblem from './pages/EditProblem';
-import ProblemDetails from './pages/ProblemDetails';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 
@@ -37,13 +34,6 @@ function App() {
             {/* Protected Routes */}
             <Route path="/dashboard" element={
               <PrivateRoute><Dashboard /></PrivateRoute>
-            } />
-            <Route path="/create-problem" element={
-              <PrivateRoute><CreateProblem /></PrivateRoute>
-            } />
-            <Route path="/problem/:id" element={<ProblemDetails />} />
-            <Route path="/edit-problem/:id" element={
-              <PrivateRoute><EditProblem /></PrivateRoute>
             } />
             <Route path="/profile" element={
               <PrivateRoute><Profile /></PrivateRoute>
