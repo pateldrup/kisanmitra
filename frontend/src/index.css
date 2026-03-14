@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-primary: #166534;
+  --color-brand-secondary: #22C55E;
+  --color-brand-accent: #4ADE80;
+  
+  --color-bg-light: #F0FDF4;
+  --color-bg-dark: #0F172A;
+  
+  --color-card-light: #FFFFFF;
+  --color-card-dark: #1E293B;
+  
+  --color-text-main: #0F172A;
+  --color-text-inverse: #E2E8F0;
+
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light text-text-main font-body transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-bg-dark text-text-inverse;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
