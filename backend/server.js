@@ -8,6 +8,10 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const problemRoutes = require('./routes/problemRoutes');
 const solutionRoutes = require('./routes/solutionRoutes');
+const cropRoutes = require('./routes/cropRoutes');
+const mandiPriceRoutes = require('./routes/mandiPriceRoutes');
+const weatherRoutes = require('./routes/weatherRoutes');
+const cropDoctorRoutes = require('./routes/cropDoctorRoutes');
 
 const app = express();
 
@@ -28,6 +32,10 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/problems', problemRoutes);
 app.use('/api/solutions', solutionRoutes);
+app.use('/api/crops', cropRoutes);
+app.use('/api/mandi-prices', mandiPriceRoutes);
+app.use('/api/weather', weatherRoutes);
+app.use('/api/crop-doctor', cropDoctorRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

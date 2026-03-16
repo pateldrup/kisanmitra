@@ -26,48 +26,63 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto card-bg p-8 rounded-xl shadow-lg mt-10 border border-gray-100 dark:border-gray-700">
-      <h2 className="text-3xl font-bold text-center mb-6">Welcome Back</h2>
-      
-      {error && <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">{error}</div>}
-      
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 outline-none transition"
-            required
-            placeholder="farmer@example.com"
-          />
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 transition-all duration-300">
+      <div className="w-full max-w-md bg-white dark:bg-[#1E293B] p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-black/5 border border-gray-100 dark:border-slate-800 animate-fade-in relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#22C55E]/5 rounded-bl-[5rem] -mr-16 -mt-16 transition-all group-hover:scale-110"></div>
+        
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-black text-text-main dark:text-white mb-2 tracking-tighter uppercase">Welcome <span className="text-[#22C55E]">Back</span></h2>
+          <p className="text-gray-400 font-bold text-xs uppercase tracking-widest">Access your farmer dashboard</p>
         </div>
         
-        <div>
-          <label className="block text-sm font-medium mb-1">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 outline-none transition"
-            required
-            placeholder="••••••••"
-          />
-        </div>
+        {error && (
+            <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 text-red-600 dark:text-red-400 text-xs font-black rounded-2xl flex items-center uppercase tracking-wider">
+                <svg className="w-4 h-4 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                {error}
+            </div>
+        )}
         
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full py-3 text-white font-semibold rounded-lg shadow-md transition ${loading ? 'bg-primary/70 cursor-not-allowed' : 'bg-primary hover:bg-primary-hover'}`}
-        >
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
-      
-      <p className="mt-6 text-center text-gray-500">
-        Don't have an account? <Link to="/signup" className="text-primary hover:underline font-medium">Sign up</Link>
-      </p>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="block text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">Email Address</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-6 py-4 bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-[#22C55E]/10 outline-none transition-all text-text-main dark:text-white font-bold placeholder-gray-400 shadow-inner"
+              required
+              placeholder="farmer@kisanmitra.com"
+            />
+          </div>
+          
+          <div className="space-y-2">
+            <label className="block text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">Secure Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-6 py-4 bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-[#22C55E]/10 outline-none transition-all text-text-main dark:text-white font-bold placeholder-gray-400 shadow-inner"
+              required
+              placeholder="••••••••"
+            />
+          </div>
+          
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-5 text-white font-black text-lg rounded-2xl shadow-xl shadow-green-500/20 transition-all uppercase tracking-widest active:scale-95 mt-4 ${loading ? 'bg-gray-100 text-gray-400 cursor-not-allowed shadow-none' : 'bg-[#22C55E] hover:bg-green-600'}`}
+          >
+            {loading ? 'Authenticating...' : 'Login Now'}
+          </button>
+        </form>
+        
+        <div className="mt-10 pt-8 border-t border-gray-50 dark:border-slate-800/50 text-center">
+            <p className="text-gray-400 font-bold text-xs uppercase tracking-widest leading-loose">
+                New to KisanMitra? <br/>
+                <Link to="/signup" className="text-[#22C55E] hover:underline decoration-2 underline-offset-4">Create Farmer Account</Link>
+            </p>
+        </div>
+      </div>
     </div>
   );
 };

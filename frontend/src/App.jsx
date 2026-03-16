@@ -16,6 +16,19 @@ import CreateProblem from './pages/CreateProblem';
 import ProblemDetails from './pages/ProblemDetails';
 import EditProblem from './pages/EditProblem';
 
+// Crop Guide Pages
+import CropLibrary from './pages/CropLibrary';
+import CropDetails from './pages/CropDetails';
+
+// Mandi Prices
+import MandiPrices from './pages/MandiPrices';
+
+// Weather Intelligence
+import WeatherDashboard from './pages/WeatherDashboard';
+
+// AI Crop Doctor
+import CropDoctor from './pages/CropDoctor';
+
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   
@@ -49,11 +62,15 @@ function App() {
             <Route path="/create-problem" element={<PrivateRoute><CreateProblem /></PrivateRoute>} />
             <Route path="/problem/:id" element={<ProblemDetails />} />
             <Route path="/edit-problem/:id" element={<PrivateRoute><EditProblem /></PrivateRoute>} />
+            
+            {/* Crop Guide Routes */}
+            <Route path="/crop-guide" element={<CropLibrary />} />
+            <Route path="/crop-guide/:id" element={<CropDetails />} />
+
             {/* Coming Soon — future feature pages */}
-            <Route path="/crop-guide"     element={<ComingSoon />} />
-            <Route path="/mandi-prices"   element={<ComingSoon />} />
-            <Route path="/weather"        element={<ComingSoon />} />
-            <Route path="/crop-doctor"    element={<ComingSoon />} />
+            <Route path="/mandi-prices"   element={<MandiPrices />} />
+            <Route path="/weather"        element={<WeatherDashboard />} />
+            <Route path="/crop-doctor"    element={<CropDoctor />} />
           </Routes>
         </main>
         <Footer />
