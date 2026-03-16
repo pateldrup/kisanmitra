@@ -16,22 +16,30 @@ export default function ComingSoon() {
   const info = PAGE_INFO[location.pathname] || { icon: '🚧', title: 'Coming Soon', desc: 'This feature is under development and will be available soon.' };
 
   return (
-    <div className="flex items-center justify-center min-h-[70vh] animate-fade-in">
-      <Card hoverEffect={false} className="max-w-lg w-full mx-auto text-center p-12 border-dashed border-2 bg-brand-primary/5 dark:bg-card-dark">
-        <span className="text-7xl mb-6 inline-block">{info.icon}</span>
-        <div className="inline-block mb-4 px-3 py-1 bg-brand-secondary/10 text-brand-secondary text-xs font-bold rounded-full uppercase tracking-wider">
-          Coming Soon
+    <div className="flex items-center justify-center min-h-[70vh] p-4 animate-fade-in transition-all duration-300">
+      <div className="max-w-xl w-full mx-auto text-center p-10 md:p-16 bg-white dark:bg-[#1E293B] rounded-[3rem] shadow-2xl shadow-black/5 border-2 border-dashed border-gray-100 dark:border-slate-800 relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#22C55E]/5 rounded-bl-[4rem] transition-all group-hover:scale-110"></div>
+        
+        <span className="text-7xl md:text-8xl mb-8 block transform group-hover:rotate-12 transition-transform duration-500">{info.icon}</span>
+        
+        <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#22C55E]/10 text-[#22C55E] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+          🚧 Engineering in Progress
         </div>
-        <h1 className="text-3xl font-heading font-bold text-text-main dark:text-text-inverse mb-4">
+        
+        <h1 className="text-3xl md:text-5xl font-black text-text-main dark:text-white mb-6 tracking-tighter uppercase leading-none">
           {info.title}
         </h1>
-        <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+        
+        <p className="text-gray-500 dark:text-slate-400 mb-10 leading-relaxed font-medium text-sm md:text-base">
           {info.desc}
         </p>
+        
         <Link to="/dashboard">
-          <Button variant="outline">← Back to Dashboard</Button>
+           <button className="px-8 py-4 bg-gray-50 dark:bg-[#0F172A] hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-400 dark:text-slate-500 font-black text-xs uppercase tracking-widest rounded-2xl transition-all active:scale-95 border border-gray-100 dark:border-slate-800 shadow-xl shadow-black/5">
+                ← Return to Hub
+           </button>
         </Link>
-      </Card>
+      </div>
     </div>
   );
 }
