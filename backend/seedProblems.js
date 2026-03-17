@@ -32,6 +32,7 @@ const seedProblems = async () => {
         description: 'My wheat crop leaves are turning yellow from the tips. This started about a week ago and is spreading fast. What could be the reason and how to fix it?',
         cropType: 'Wheat',
         image: 'https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=600&auto=format&fit=crop', // Realistic wheat
+        location: 'Ludhiana, Punjab',
         createdBy: demoUser._id,
       },
       {
@@ -39,6 +40,7 @@ const seedProblems = async () => {
         description: 'I transplanted rice seedlings 10 days ago but they are not showing any new growth. The soil looks fine but the plants seem stunted. Please help.',
         cropType: 'Rice',
         image: 'https://images.unsplash.com/photo-1586521995568-39abaa0c2311?q=80&w=600&auto=format&fit=crop', // Rice field
+        location: 'Amritsar, Punjab',
         createdBy: demoUser._id,
       },
       {
@@ -46,6 +48,7 @@ const seedProblems = async () => {
         description: 'There is a large infestation of white flies on my cotton plants. The leaves are becoming sticky and curling. What pesticide should I use?',
         cropType: 'Cotton',
         image: 'https://images.unsplash.com/photo-1601614050275-f935398ab0f1?q=80&w=600&auto=format&fit=crop', // Cotton plant
+        location: 'Bathinda, Punjab',
         createdBy: demoUser._id,
       },
       {
@@ -53,6 +56,7 @@ const seedProblems = async () => {
         description: 'My maize plants are healthy but the cobs forming are very small in size compared to expected. I applied fertilizer at sowing time. What am I missing?',
         cropType: 'Maize',
         image: 'https://images.unsplash.com/photo-1510629579083-d02cc2492fdb?q=80&w=600&auto=format&fit=crop', // Corn
+        location: 'Jalandhar, Punjab',
         createdBy: demoUser._id,
       },
       {
@@ -60,6 +64,7 @@ const seedProblems = async () => {
         description: 'I found red discoloration inside the stalks of some of my sugarcane plants. The plants are wilting and dying from the top. Is this red rot? What can I do?',
         cropType: 'Sugarcane',
         image: 'https://images.unsplash.com/photo-1596767228383-0504d60fc900?q=80&w=600&auto=format&fit=crop', // Sugarcane
+        location: 'Hoshiarpur, Punjab',
         createdBy: demoUser._id,
       }
     ];
