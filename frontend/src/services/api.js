@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configure standard API
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
 // Add a request interceptor to append the token
