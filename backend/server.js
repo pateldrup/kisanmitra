@@ -18,7 +18,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: '*', // For now allow all to fix the immediate block
+  origin: [
+    'http://localhost:5173',
+    'https://kisan-mitra-beta.vercel.app',
+    'https://kisanmitra-lpd3.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   credentials: true
