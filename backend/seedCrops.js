@@ -9,35 +9,8 @@ dotenv.config();
 
 const crops = [
   {
-    name: 'Wheat',
-    image: '/images/crops/wheat.jpg',
-    season: 'Rabi',
-    soilType: 'Loamy',
-    waterRequirement: 'Medium',
-    temperatureRange: '10°C - 25°C',
-    growthDuration: '120-150 days',
-    description: 'Wheat is a grass widely cultivated for its seed, a cereal grain which is a worldwide staple food. It thrives in cool climates and requires well-drained loamy soil.',
-    expectedYield: '3000-4000 kg/ha',
-    farmingTips: {
-      bestPractices: [
-        'Ensure proper land leveling before sowing.',
-        'Use high-yield, disease-resistant seed varieties.',
-        'Apply initial irrigation 21 days after sowing (Crown Root Initiation stage).'
-      ],
-      commonMistakes: [
-        'Over-irrigating during the early vegetative stage.',
-        'Delaying sowing past November, which reduces yield.',
-        'Ignoring early signs of yellow rust.'
-      ],
-      yieldTips: [
-        'Apply split doses of Nitrogen for better uptake.',
-        'Ensure timely weed control within first 30-40 days.'
-      ]
-    }
-  },
-  {
-    name: 'Rice (Paddy)',
-    image: '/images/crops/rice.jpg',
+    name: 'Rice',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzFfCVQjOnPlauI5dci7gRlUyfJHxICr4mHg&s',
     season: 'Kharif',
     soilType: 'Clay',
     waterRequirement: 'High',
@@ -63,8 +36,31 @@ const crops = [
     }
   },
   {
+    name: 'Cotton',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4WSRM6dqg8JJGwYR4W5cbl1ERh5zlGjr0YA&s',
+    season: 'Kharif',
+    soilType: 'Black Soil',
+    waterRequirement: 'Medium',
+    temperatureRange: '21°C - 30°C',
+    growthDuration: '150-180 days',
+    description: 'Cotton is a soft, fluffy staple fiber that grows in a boll around the seeds of the cotton plants of the genus Gossypium.',
+    expectedYield: '1500-2500 kg/ha',
+    farmingTips: {
+      bestPractices: [
+        'Deep summer ploughing is beneficial.',
+        'Sow early to escape insect damage.',
+      ],
+      commonMistakes: [
+        'Waterlogging during seedling stage.',
+      ],
+      yieldTips: [
+        'Use balanced NPK fertilizers.'
+      ]
+    }
+  },
+  {
     name: 'Maize',
-    image: '/images/crops/maize.jpg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiSye2pTzCZUp_MeZS0ERCRWYn3pk1IpVYLg&s',
     season: 'Kharif',
     soilType: 'Loamy',
     waterRequirement: 'Medium',
@@ -86,6 +82,56 @@ const crops = [
       yieldTips: [
         'Apply Phosphorus and Potassium entirely as basal dose.',
         'Apply Nitrogen in 3 splits for maximum efficiency.'
+      ]
+    }
+  },
+  {
+    name: 'Sugarcane',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB4lDseSsrGb6Yq3EcJ4u6Lnr5ZFNluj0tUQ&s',
+    season: 'Zaid',
+    soilType: 'Loamy',
+    waterRequirement: 'High',
+    temperatureRange: '20°C - 35°C',
+    growthDuration: '10-14 months',
+    description: 'Sugarcane is a species of tall, perennial grass that is used for sugar production.',
+    expectedYield: '60-100 tonnes/ha',
+    farmingTips: {
+      bestPractices: [
+        'Use healthy setts for planting.',
+        'Practice trash mulching to conserve moisture.',
+      ],
+      commonMistakes: [
+        'Delayed planting reduces tillering.',
+      ],
+      yieldTips: [
+        'Apply adequate potash to improve sugar recovery.'
+      ]
+    }
+  },
+  {
+    name: 'Wheat',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRgwWA8kQxe3mCAyR8-WkIyV411HDYfLFDsA&s',
+    season: 'Rabi',
+    soilType: 'Loamy',
+    waterRequirement: 'Medium',
+    temperatureRange: '10°C - 25°C',
+    growthDuration: '120-150 days',
+    description: 'Wheat is a grass widely cultivated for its seed, a cereal grain which is a worldwide staple food. It thrives in cool climates and requires well-drained loamy soil.',
+    expectedYield: '3000-4000 kg/ha',
+    farmingTips: {
+      bestPractices: [
+        'Ensure proper land leveling before sowing.',
+        'Use high-yield, disease-resistant seed varieties.',
+        'Apply initial irrigation 21 days after sowing (Crown Root Initiation stage).'
+      ],
+      commonMistakes: [
+        'Over-irrigating during the early vegetative stage.',
+        'Delaying sowing past November, which reduces yield.',
+        'Ignoring early signs of yellow rust.'
+      ],
+      yieldTips: [
+        'Apply split doses of Nitrogen for better uptake.',
+        'Ensure timely weed control within first 30-40 days.'
       ]
     }
   }

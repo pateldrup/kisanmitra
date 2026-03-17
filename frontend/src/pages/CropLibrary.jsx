@@ -152,7 +152,7 @@ const CropLibrary = () => {
                             <option value="Loamy">Loamy</option>
                             <option value="Sandy">Sandy</option>
                             <option value="Alluvial">Alluvial</option>
-                            <option value="Black">Black</option>
+                            <option value="Black Soil">Black Soil</option>
                             <option value="Red">Red</option>
                         </select>
                     </div>

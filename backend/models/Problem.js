@@ -16,6 +16,22 @@ const problemSchema = new mongoose.Schema({
   image: {
     type: String, // Store image URL
   },
+  location: {
+    type: String,
+    required: true,
+  },
+  likes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
+  bookmarks: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
+  reports: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

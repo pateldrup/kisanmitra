@@ -21,7 +21,7 @@ const MandiPrices = () => {
     useEffect(() => {
         const fetchFilters = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/mandi-prices/filters');
+                const res = await axios.get('/api/mandi-prices/filters');
                 if (res.data.success) {
                     setFilterData(res.data.data);
                 }
@@ -48,11 +48,11 @@ const MandiPrices = () => {
         setLoading(true);
         setError(null);
         try {
-            let url = 'http://localhost:5000/api/mandi-prices';
+            let url = '/api/mandi-prices';
             
             // If there's an active search string, hit the search endpoint instead
             if (debouncedSearch) {
-                 url = `http://localhost:5000/api/mandi-prices/search?q=${debouncedSearch}`;
+                 url = `/api/mandi-prices/search?q=${debouncedSearch}`;
             } else {
                  // Build query params
                  const params = new URLSearchParams();

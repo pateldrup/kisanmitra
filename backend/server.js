@@ -12,6 +12,7 @@ const cropRoutes = require('./routes/cropRoutes');
 const mandiPriceRoutes = require('./routes/mandiPriceRoutes');
 const weatherRoutes = require('./routes/weatherRoutes');
 const cropDoctorRoutes = require('./routes/cropDoctorRoutes');
+const cropGuideRoutes = require('./routes/cropGuideRoutes');
 
 const app = express();
 
@@ -36,6 +37,11 @@ app.use('/api/crops', cropRoutes);
 app.use('/api/mandi-prices', mandiPriceRoutes);
 app.use('/api/weather', weatherRoutes);
 app.use('/api/crop-doctor', cropDoctorRoutes);
+app.use('/api/crop-guide', cropGuideRoutes);
+
+// Serve static files (uploads)
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

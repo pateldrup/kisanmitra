@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 const CropCard = ({ crop, compareMode, isSelected, onSelect }) => {
     return (
         <div 
-            className={`group bg-white dark:bg-[#1E293B] rounded-2xl overflow-hidden border-2 transition-all duration-500 transform hover:-translate-y-2 ${
+            className={`group bg-white dark:bg-[#1E293B] rounded-[2rem] overflow-hidden border border-gray-100 dark:border-slate-800 shadow-xl shadow-black/5 transition-all duration-500 transform hover:-translate-y-2 flex flex-col h-full ${
                 isSelected 
                 ? 'border-[#22C55E] ring-4 ring-[#22C55E]/20' 
-                : 'border-gray-100 dark:border-slate-800 hover:border-[#22C55E] hover:shadow-[0_20px_40px_-15px_rgba(34,197,94,0.3)]'
+                : 'hover:border-[#22C55E]/50 hover:shadow-2xl hover:shadow-green-500/10'
             }`}
         >
             {/* Top Section: Crop Image */}
-            <div className="relative h-40 md:h-48 lg:h-56 overflow-hidden">
+            <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-slate-800 shrink-0">
                 <img 
                     src={crop.image || '/images/crops/placeholder.jpg'} 
                     alt={crop.name} 
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     onError={(e) => { 
                         e.target.src = '/images/crops/placeholder.jpg';

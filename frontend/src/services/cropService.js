@@ -41,10 +41,21 @@ const compareCrops = async (crop1Id, crop2Id) => {
     }
 };
 
+const getCropGuideByName = async (cropName) => {
+    try {
+        const response = await axios.get(`/api/crop-guide/${cropName}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching crop guide for ${cropName}:`, error.response?.data || error.message);
+        throw error;
+    }
+};
+
 const cropService = {
   getCrops,
   getCropById,
-  compareCrops
+  compareCrops,
+  getCropGuideByName
 };
 
 export default cropService;

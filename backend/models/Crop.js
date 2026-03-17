@@ -17,7 +17,7 @@ const cropSchema = new mongoose.Schema({
   },
   soilType: {
     type: String, // Can also be an array if multiple soil types apply, but keeping string for simplicity
-    enum: ['Clay', 'Loamy', 'Sandy', 'Alluvial', 'Black', 'Red'], // Added a few common ones
+    enum: ['Clay', 'Loamy', 'Sandy', 'Alluvial', 'Black Soil', 'Red'], // Added Black Soil
     required: true,
   },
   waterRequirement: {

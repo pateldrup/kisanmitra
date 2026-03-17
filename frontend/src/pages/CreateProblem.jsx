@@ -10,19 +10,34 @@ const CROP_TYPES = ['Wheat', 'Rice', 'Sugarcane', 'Cotton', 'Vegetables', 'Fruit
 export default function CreateProblem() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const [formData, setFormData] = useState({ title: '', description: '', cropType: 'Wheat', image: '' });
+  const [formData, setFormData] = useState({ title: '', description: '', cropType: 'Wheat', location: '' });
+  const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleChange = (e) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleFileChange = (e) => setImageFile(e.target.files[0]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
     try {
-      await api.post('/problems', formData);
-      navigate('/dashboard');
+      const data = new FormData();
+      data.append('title', formData.title);
+      data.append('description', formData.description);
+      data.append('cropType', formData.cropType);
+      data.append('location', formData.location);
+      if (imageFile) {
+        data.append('image', imageFile);
+      }
+
+      await api.post('/problems', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      navigate('/community-problems');
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong. Please try again.');
     } finally {
@@ -103,18 +118,32 @@ export default function CreateProblem() {
             />
           </div>
 
-          {/* Image URL (optional) */}
+          {/* Location */}
           <div className="space-y-3">
             <label className="block text-sm font-black text-text-main dark:text-text-inverse uppercase tracking-widest opacity-60 ml-1">
-              Image Reference URL <span className="text-gray-400 font-normal normal-case italic">(optional)</span>
+              Location <span className="text-red-400">*</span>
             </label>
             <input
-              type="url"
-              name="image"
-              value={formData.image}
+              type="text"
+              name="location"
+              value={formData.location}
               onChange={handleChange}
-              placeholder="https://example.com/leaf-photo.jpg"
+              placeholder="e.g. Gujarat, India"
+              required
               className="w-full px-6 py-4 bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-[#22C55E]/10 focus:border-[#22C55E] outline-none transition-all text-text-main dark:text-text-inverse font-bold placeholder-gray-400"
+            />
+          </div>
+
+          {/* Image Upload */}
+          <div className="space-y-3">
+            <label className="block text-sm font-black text-text-main dark:text-text-inverse uppercase tracking-widest opacity-60 ml-1">
+              Upload Image <span className="text-gray-400 font-normal normal-case italic">(optional)</span>
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="w-full px-6 py-4 bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-[#22C55E]/10 focus:border-[#22C55E] outline-none transition-all text-text-main dark:text-text-inverse font-bold file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#22C55E]/10 file:text-[#22C55E] hover:file:bg-[#22C55E]/20"
             />
           </div>
 
