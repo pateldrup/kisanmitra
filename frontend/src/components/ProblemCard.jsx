@@ -16,7 +16,7 @@ const ProblemCard = ({ problem }) => {
     }
   };
 
-  const backendUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+  const backendUrl = import.meta.env.API_URL?.replace('/api', '') || 'http://localhost:5000';
   const imageUrl = problem.image 
     ? (problem.image.startsWith('http') ? problem.image : `${backendUrl}${problem.image}`) 
     : getFallbackImage(problem.cropType);
