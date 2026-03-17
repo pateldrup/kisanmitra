@@ -44,7 +44,7 @@ const CropLibrary = () => {
             if (waterRequirement) params.waterRequirement = waterRequirement;
 
             const data = await cropService.getCrops(params);
-            setCrops(data);
+            setCrops(Array.isArray(data) ? data : (data.data || []));
         } catch (err) {
             setError('Failed to load crops data.');
         } finally {

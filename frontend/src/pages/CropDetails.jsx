@@ -135,7 +135,7 @@ const CropDetails = () => {
                                      </div>
                                      Farming Tips
                                  </h3>
-                                 {guideData?.tips?.length > 0 ? (
+                                 {Array.isArray(guideData?.tips) && guideData.tips.length > 0 ? (
                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {guideData.tips.map((tip, index) => (
                                             <div key={index} className="bg-gray-50 dark:bg-[#0F172A] p-6 rounded-[2rem] flex items-start border border-gray-100/50 dark:border-slate-800/50 transition-all hover:scale-[1.02]">
@@ -166,7 +166,7 @@ const CropDetails = () => {
                              ) : (
                                  <div className="space-y-10">
                                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                         {guideData.nutritionPlan.fertilizers.map((fert, idx) => (
+                                         {(Array.isArray(guideData?.nutritionPlan?.fertilizers) ? guideData.nutritionPlan.fertilizers : []).map((fert, idx) => (
                                              <div key={idx} className="bg-[#0F172A] border border-slate-700 rounded-3xl p-8 flex flex-col justify-between items-center text-center hover:scale-[1.02] transition-all shadow-xl shadow-green-900/10">
                                                  <h4 className="text-2xl font-black text-[#22C55E] mb-4 uppercase tracking-tight">{fert.name}</h4>
                                                  <div className="bg-[#1E293B] px-8 py-4 rounded-[2rem] border border-slate-700 shadow-inner">
@@ -180,7 +180,7 @@ const CropDetails = () => {
                                         <div className="bg-gray-50 dark:bg-slate-800/50 p-8 rounded-[2.5rem] border border-gray-100 dark:border-slate-700">
                                             <h4 className="text-xl font-black text-gray-800 dark:text-slate-200 mb-6 uppercase tracking-widest border-b border-gray-200 dark:border-slate-700 pb-4">Application Stages</h4>
                                             <ul className="space-y-4">
-                                                {guideData.nutritionPlan.applicationStages.map((stage, i) => (
+                                                {(Array.isArray(guideData.nutritionPlan.applicationStages) ? guideData.nutritionPlan.applicationStages : []).map((stage, i) => (
                                                     <li key={i} className="flex items-center text-gray-700 dark:text-slate-300 font-medium">
                                                         <span className="w-2 h-2 rounded-full bg-[#22C55E] mr-4 shadow-[0_0_10px_rgba(34,197,94,0.8)]"></span>
                                                         {stage}
@@ -192,7 +192,7 @@ const CropDetails = () => {
                                         <div className="bg-[#f0fdf4] dark:bg-green-900/10 p-8 rounded-[2.5rem] border border-green-100 dark:border-green-900/30">
                                             <h4 className="text-xl font-black text-green-700 dark:text-green-400 mb-6 uppercase tracking-widest border-b border-green-200 dark:border-green-900/50 pb-4">Organic Options</h4>
                                             <ul className="space-y-4">
-                                                {guideData.nutritionPlan.organicOptions.map((opt, i) => (
+                                                {(Array.isArray(guideData.nutritionPlan.organicOptions) ? guideData.nutritionPlan.organicOptions : []).map((opt, i) => (
                                                     <li key={i} className="flex items-center text-green-800 dark:text-green-300 font-medium">
                                                         <span className="mr-3 text-lg">🌿</span>
                                                         {opt}
@@ -220,7 +220,7 @@ const CropDetails = () => {
                                  </div>
                              ) : (
                                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                     {guideData.diseases.map((disease, idx) => (
+                                     {(Array.isArray(guideData?.diseases) ? guideData.diseases : []).map((disease, idx) => (
                                          <div key={idx} className="bg-gray-50 dark:bg-[#0F172A] rounded-[2.5rem] border border-gray-100 dark:border-slate-800 p-8 relative overflow-hidden group hover:border-red-500/30 transition-all shadow-lg hover:shadow-red-500/5">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-bl-[5rem] transition-all group-hover:bg-red-500/10 group-hover:scale-110 flex items-start justify-end p-6 text-4xl opacity-50">
                                                 🦠

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const MandiPrices = () => {
@@ -21,9 +21,14 @@ const MandiPrices = () => {
     useEffect(() => {
         const fetchFilters = async () => {
             try {
-                const res = await axios.get('/api/mandi-prices/filters');
+                const res = await api.get('mandi-prices/filters');
                 if (res.data.success) {
-                    setFilterData(res.data.data);
+                    const filters = res.data.data || {};
+                    setFilterData({
+                        crops: Array.isArray(filters.crops) ? filters.crops : [],
+                        states: Array.isArray(filters.states) ? filters.states : [],
+                        mandis: Array.isArray(filters.mandis) ? filters.mandis : []
+                    });
                 }
             } catch (err) {
                 console.error("Failed to load filters", err);
@@ -48,11 +53,11 @@ const MandiPrices = () => {
         setLoading(true);
         setError(null);
         try {
-            let url = '/api/mandi-prices';
+            let url = 'mandi-prices';
             
             // If there's an active search string, hit the search endpoint instead
             if (debouncedSearch) {
-                 url = `/api/mandi-prices/search?q=${debouncedSearch}`;
+                 url = `mandi-prices/search?q=${debouncedSearch}`;
             } else {
                  // Build query params
                  const params = new URLSearchParams();
@@ -65,7 +70,7 @@ const MandiPrices = () => {
                  }
             }
 
-            const response = await axios.get(url);
+            const response = await api.get(url);
             if (response.data.success) {
                 setPrices(response.data.data);
             } else {
@@ -92,7 +97,7 @@ const MandiPrices = () => {
 
     // Prepare data for the graph (Trend chart usually looks at average modal price by date)
     // Here we'll take a subset of the first 30 prices and sort them by ascending date for line-charting
-    const chartData = [...prices]
+    const chartData = (Array.isArray(prices) ? [...prices] : [])
         .slice(0, 30)
         .sort((a, b) => new Date(a.date) - new Date(b.date))
         .map(item => ({

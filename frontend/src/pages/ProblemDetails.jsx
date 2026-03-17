@@ -21,8 +21,8 @@ export default function ProblemDetails() {
   const fetchData = async () => {
     try {
       const [probRes, solRes] = await Promise.all([
-        api.get(`/problems/${id}`),
-        api.get(`/solutions/${id}`)
+        api.get(`problems/${id}`),
+        api.get(`solutions/${id}`)
       ]);
       setProblem(probRes.data);
       setSolutions(solRes.data);
@@ -38,7 +38,7 @@ export default function ProblemDetails() {
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this problem?')) return;
     try {
-      await api.delete(`/problems/${id}`);
+      await api.delete(`problems/${id}`);
       navigate('/dashboard');
     } catch {
       setError('Failed to delete problem.');
@@ -50,7 +50,7 @@ export default function ProblemDetails() {
     if (!solutionText.trim()) return;
     setSubmitting(true);
     try {
-      const { data } = await api.post('/solutions', { solutionText, problemId: id });
+      const { data } = await api.post('solutions', { solutionText, problemId: id });
       setSolutions(prev => [...prev, data]);
       setSolutionText('');
     } catch {

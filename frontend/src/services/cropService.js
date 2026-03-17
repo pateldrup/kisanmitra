@@ -1,15 +1,15 @@
-import axios from 'axios';
+import api from './api';
 
-const API_URL = '/api/crops';
+const API_PATH = 'crops';
 
 // Fetch all crops with optional search/filter params
 const getCrops = async (params = {}) => {
   try {
       // Build query string
       const queryString = new URLSearchParams(params).toString();
-      const url = queryString ? `${API_URL}?${queryString}` : API_URL;
+      const url = queryString ? `${API_PATH}?${queryString}` : API_PATH;
       
-      const response = await axios.get(url);
+      const response = await api.get(url);
       return response.data;
   } catch (error) {
       console.error("Error fetching crops:", error.response?.data || error.message);
@@ -20,7 +20,7 @@ const getCrops = async (params = {}) => {
 // Fetch a single crop by ID
 const getCropById = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await api.get(`${API_PATH}/${id}`);
         return response.data;
     } catch (error) {
         console.error(`Error fetching crop with ID ${id}:`, error.response?.data || error.message);
@@ -31,7 +31,7 @@ const getCropById = async (id) => {
 // Compare two crops
 const compareCrops = async (crop1Id, crop2Id) => {
     try {
-        const response = await axios.get(`${API_URL}/compare`, {
+        const response = await api.get(`${API_PATH}/compare`, {
             params: { crop1Id, crop2Id }
         });
         return response.data;
@@ -43,7 +43,7 @@ const compareCrops = async (crop1Id, crop2Id) => {
 
 const getCropGuideByName = async (cropName) => {
     try {
-        const response = await axios.get(`/api/crop-guide/${cropName}`);
+        const response = await api.get(`crop-guide/${cropName}`);
         return response.data;
     } catch (error) {
         console.error(`Error fetching crop guide for ${cropName}:`, error.response?.data || error.message);

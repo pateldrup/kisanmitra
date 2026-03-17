@@ -28,9 +28,9 @@ const CropDoctor = () => {
 
     const fetchHistory = async () => {
         try {
-            const res = await api.get('/crop-doctor/history');
+            const res = await api.get('crop-doctor/history');
             if (res.data.success) {
-                setHistory(res.data.data);
+                setHistory(Array.isArray(res.data.data) ? res.data.data : []);
             }
         } catch (err) {
             console.error('Error fetching history:', err);
@@ -63,7 +63,7 @@ const CropDoctor = () => {
             // Since we don't have a real image storage service here, 
             // we'll send the previewUrl as a placeholder.
             // In a real app, this would be a FormData upload.
-            const res = await api.post('/crop-doctor/diagnose', {
+            const res = await api.post('crop-doctor/diagnose', {
                 cropName: '', // Let the backend guess or provide a dropdown
                 imageUrl: previewUrl 
             });
@@ -237,7 +237,7 @@ const CropDoctor = () => {
                                                 Key Symptoms
                                             </h4>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                {diagnosis.symptoms.map((s, i) => (
+                                                {(Array.isArray(diagnosis.symptoms) ? diagnosis.symptoms : []).map((s, i) => (
                                                     <div key={i} className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/5">
                                                         <div className="w-2 h-2 bg-[#22C55E] rounded-full shrink-0 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
                                                         <span className="text-sm font-bold text-gray-600 dark:text-slate-300">{s}</span>
@@ -286,7 +286,7 @@ const CropDoctor = () => {
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {history.map((item) => (
+                                {(Array.isArray(history) ? history : []).map((item) => (
                                     <div key={item._id} className="bg-white dark:bg-[#1E293B] p-6 rounded-[2rem] shadow-lg border border-gray-100 dark:border-slate-800 hover:border-[#22C55E]/30 transition-all group flex flex-col">
                                         <div className="flex justify-between items-start mb-4">
                                             <div className="bg-gray-100 dark:bg-[#0F172A] px-3 py-1 rounded-full text-[10px] font-black uppercase text-gray-500 tracking-widest">

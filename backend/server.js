@@ -17,7 +17,12 @@ const cropGuideRoutes = require('./routes/cropGuideRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // For now allow all to fix the immediate block
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 

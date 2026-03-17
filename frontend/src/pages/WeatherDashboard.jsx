@@ -32,9 +32,9 @@ const WeatherDashboard = () => {
         setError(null);
         try {
             const [currentRes, forecastRes, hourlyRes] = await Promise.all([
-                api.get(`/weather/current?location=${loc}`),
-                api.get(`/weather/forecast?location=${loc}`),
-                api.get(`/weather/hourly?location=${loc}`)
+                api.get(`weather/current?location=${loc}`),
+                api.get(`weather/forecast?location=${loc}`),
+                api.get(`weather/hourly?location=${loc}`)
             ]);
 
             setCurrent(currentRes.data.data);

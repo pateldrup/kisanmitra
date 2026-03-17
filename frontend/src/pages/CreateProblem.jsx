@@ -32,7 +32,7 @@ export default function CreateProblem() {
         data.append('image', imageFile);
       }
 
-      await api.post('/problems', data, {
+      await api.post('problems', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

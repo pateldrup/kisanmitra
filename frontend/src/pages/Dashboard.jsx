@@ -20,8 +20,9 @@ export default function Dashboard() {
      const fetchCrops = async () => {
          setCropsLoading(true);
          try {
-             const { data } = await api.get('/crops?limit=5'); // Fetch a few crops
-             if (!cancelled) setCrops(data.data || []);
+             const { data } = await api.get('crops?limit=5'); // Fetch a few crops
+             // API returns array directly in response.data based on cropController.js
+             if (!cancelled) setCrops(Array.isArray(data) ? data : (data.data || []));
          } catch (err) {
              console.error('Error fetching crops', err);
          } finally {
@@ -39,8 +40,12 @@ export default function Dashboard() {
          setProblemsLoading(true);
          try {
              // Fetch 3 latest problems
-             const { data } = await api.get('/problems?limit=3&sort=newest');
-             if (!cancelled) setProblems(data.problems || []);
+             const { data } = await api.get('problems?limit=3&sort=newest');
+             if (!cancelled) {
+                 // Support both { problems: [] } and [] structure
+                 const probs = data.problems || (Array.isArray(data) ? data : []);
+                 setProblems(probs);
+             }
          } catch (err) {
              console.error('Error fetching problems', err);
          } finally {
