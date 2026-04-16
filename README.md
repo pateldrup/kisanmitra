@@ -34,6 +34,9 @@ Users can:
 * Update posts
 * Delete posts
 
+<img width="1879" height="895" alt="image" src="https://github.com/user-attachments/assets/efb06b46-ea41-42f0-b835-540ccb8e2020" />
+
+
 ### 🔍 Search, Filter & Sort
 
 * Search problems by crop name or title
